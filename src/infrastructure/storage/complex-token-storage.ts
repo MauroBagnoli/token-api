@@ -12,10 +12,7 @@ export class ComplexTokenStorage implements ITokenDataAccess {
         this.pool = DatabasePool.getPool()
     }
 
-    async newToken(
-        tableName: string,
-        tokenData: ComplexToken,
-    ): Promise<ComplexToken> {
+    async newToken(tableName: string, tokenData: ComplexToken): Promise<ComplexToken> {
         const query = `INSERT INTO ${tableName}(name, ticker, description, extraData) VALUES ($1, $2, $3, $4) RETURNING *`
         const values = [tokenData.name, tokenData.ticker, tokenData.description]
         const result = await this.pool.query(query, values)

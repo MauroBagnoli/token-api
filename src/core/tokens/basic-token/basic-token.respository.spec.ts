@@ -20,9 +20,7 @@ describe('BasicTokenRepository', () => {
     })
 
     test('add() should invoke dataAccess.addToken', async () => {
-        when(dataAccessMock.newToken(BASIC_TOKENS, mockBasicToken)).thenResolve(
-            mockBasicToken,
-        )
+        when(dataAccessMock.newToken(BASIC_TOKENS, mockBasicToken)).thenResolve(mockBasicToken)
 
         const result = await basicTokenRepo.add(mockBasicToken)
 
@@ -31,9 +29,7 @@ describe('BasicTokenRepository', () => {
     })
 
     test('findAll() should retrieve tokens', async () => {
-        when(dataAccessMock.allTokens(BASIC_TOKENS)).thenResolve([
-            mockBasicToken,
-        ])
+        when(dataAccessMock.allTokens(BASIC_TOKENS)).thenResolve([mockBasicToken])
 
         const result = await basicTokenRepo.findAll()
 
@@ -42,9 +38,7 @@ describe('BasicTokenRepository', () => {
     })
 
     test('findById() should return a specific token', async () => {
-        when(dataAccessMock.tokenById(BASIC_TOKENS, 1)).thenResolve(
-            mockBasicToken,
-        )
+        when(dataAccessMock.tokenById(BASIC_TOKENS, 1)).thenResolve(mockBasicToken)
 
         const result = await basicTokenRepo.findById(1)
 

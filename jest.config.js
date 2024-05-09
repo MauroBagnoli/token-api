@@ -2,10 +2,7 @@ module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
     roots: ['<rootDir>/src'],
-    testMatch: [
-        '**/__tests__/**/*.+(ts|tsx|js)',
-        '**/?(*.)+(spec|test).+(ts|tsx|js)',
-    ],
+    testMatch: ['**/__tests__/**/*.+(ts|tsx|js)', '**/?(*.)+(spec|test).+(ts|tsx|js)'],
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
@@ -14,5 +11,8 @@ module.exports = {
         '@basic-models/(.*)': '<rootDir>/src/basic-token/models/$1',
         '@complex-models/(.*)': '<rootDir>/src/complex-token/models/$1',
         '@interfaces/(.*)': '<rootDir>/src/interfaces/$1',
+    },
+    moduleNameMapper: {
+        '^@tokens$': '<rootDir>/src/core/tokens/index.ts',
     },
 }

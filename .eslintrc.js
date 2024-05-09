@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
         project: './tsconfig.json',
@@ -17,9 +17,19 @@ export default {
         jest: true,
     },
     rules: {
-        '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+        'no-trailing-spaces': 'error',
+        'no-multiple-empty-lines': [
+            'error',
+            {
+                max: 1,
+                maxEOF: 1,
+                maxBOF: 0,
+            },
+        ],
+        indent: ['error', 4],
+        'eol-last': ['error', 'always'],
     },
 }

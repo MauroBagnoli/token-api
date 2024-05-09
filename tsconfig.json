@@ -13,7 +13,10 @@
         "baseUrl": "./",
         "incremental": true,
         "resolveJsonModule": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "paths": {
+            "@tokens": ["./src/core/tokens/index.ts"]
+        }
     },
     "exclude": ["node_modules", "dist"]
 }

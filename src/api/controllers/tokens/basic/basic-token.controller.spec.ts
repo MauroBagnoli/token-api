@@ -3,10 +3,9 @@ import request from 'supertest'
 import { Container } from 'inversify'
 import { InversifyExpressServer } from 'inversify-express-utils'
 import { mock, instance, when, anything } from 'ts-mockito'
-import TOKEN_TYPES from '../../../../core/tokens/token-types'
 import express, { Application } from 'express'
-import { BasicTokenService } from '../../../../core/tokens/basic-token/basic-token.service'
 import './basic-token.controller'
+import { BasicTokenService, TOKEN_TYPES } from '@tokens'
 
 describe('BasicTokenController', () => {
     let container: Container
@@ -65,9 +64,7 @@ describe('BasicTokenController', () => {
             description: 'A simple description',
         }
 
-        when(basicTokenServiceMock.createToken(anything())).thenThrow(
-            new Error('Something went wrong'),
-        )
+        when(basicTokenServiceMock.createToken(anything())).thenThrow(new Error('Something went wrong'))
 
         await request(app)
             .post('/tokens/basic')

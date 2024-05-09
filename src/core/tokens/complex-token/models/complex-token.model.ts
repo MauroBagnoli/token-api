@@ -11,13 +11,7 @@ export class ComplexToken implements IComplexToken {
     description: string
     extraData: string
 
-    constructor(
-        id: number,
-        name: string,
-        ticker: string,
-        description: string,
-        extraData: string,
-    ) {
+    constructor(id: number, name: string, ticker: string, description: string, extraData: string) {
         this.id = id
         this.name = name
         this.ticker = ticker

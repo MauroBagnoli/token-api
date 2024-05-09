@@ -4,7 +4,6 @@ import TOKEN_TYPES from '../core/tokens/token-types'
 import CONTROLLER_TOKEN_TYPES from '../api/controllers/tokens/types'
 
 import {
-    IBasicTokenRepository,
     ITokenDataAccess,
     ITokenFactory,
     ITokenPersistenceStrategy,
@@ -23,62 +22,41 @@ import { ComplexTokenService } from '../core/tokens/complex-token/complex-token.
 import { IComplexTokenResponseDto } from '../core/tokens/basic-token/models/dto/response/token-response.dto'
 import { ComplexTokenRepository } from '../core/tokens/complex-token/complex-token.repository'
 import { BasicTokenController } from '../api/controllers/tokens/basic/basic-token.controller'
+import { IBasicTokenRepository } from 'src/core/tokens/basic-token/basic-token.interfaces'
 
 const container = new Container()
 
 // Binding the shared Token Factory which can create multiple types of tokens
-container
-    .bind<ITokenFactory>(TOKEN_TYPES.TokenFactory)
-    .to(TokenFactory)
-    .inSingletonScope()
+container.bind<ITokenFactory>(TOKEN_TYPES.TokenFactory).to(TokenFactory).inSingletonScope()
 
 // Binding token persistence strategies for different types of tokens
 container
-    .bind<ITokenPersistenceStrategy<BasicToken>>(
-        TOKEN_TYPES.BasicTokenPersistenceStrategy,
-    )
+    .bind<ITokenPersistenceStrategy<BasicToken>>(TOKEN_TYPES.BasicTokenPersistenceStrategy)
     .to(BasicTokenPersistenceStrategy)
     .inSingletonScope()
 container
-    .bind<ITokenPersistenceStrategy<ComplexToken>>(
-        TOKEN_TYPES.ComplexTokenPersistenceStrategy,
-    )
+    .bind<ITokenPersistenceStrategy<ComplexToken>>(TOKEN_TYPES.ComplexTokenPersistenceStrategy)
     .to(ComplexTokenPersistenceStrategy)
     .inSingletonScope()
 
 // Binding the ITokenDataAccess interface to the Token implementation
-container
-    .bind<ITokenDataAccess>(TOKEN_TYPES.ITokenDataAccess)
-    .to(BasicTokenStorage)
-    .inSingletonScope()
+container.bind<ITokenDataAccess>(TOKEN_TYPES.ITokenDataAccess).to(BasicTokenStorage).inSingletonScope()
 
 // Service Bindings
 container
-    .bind<ITokenService<BasicToken, IBasicTokenCreateDTO>>(
-        TOKEN_TYPES.BasicTokenService,
-    )
+    .bind<ITokenService<BasicToken, IBasicTokenCreateDTO>>(TOKEN_TYPES.BasicTokenService)
     .to(BasicTokenService)
     .inSingletonScope()
 container
-    .bind<ITokenService<ComplexToken, IComplexTokenResponseDto>>(
-        TOKEN_TYPES.ComplexTokenService,
-    )
+    .bind<ITokenService<ComplexToken, IComplexTokenResponseDto>>(TOKEN_TYPES.ComplexTokenService)
     .to(ComplexTokenService)
     .inSingletonScope()
 
 // Repository binding
-container
-    .bind<IBasicTokenRepository>(TOKEN_TYPES.BasicTokenRepository)
-    .to(BasicTokenRepository)
-    .inSingletonScope()
-container
-    .bind<ComplexTokenRepository>(TOKEN_TYPES.ComplexTokenRepository)
-    .to(ComplexTokenRepository)
-    .inSingletonScope()
+container.bind<IBasicTokenRepository>(TOKEN_TYPES.BasicTokenRepository).to(BasicTokenRepository).inSingletonScope()
+container.bind<ComplexTokenRepository>(TOKEN_TYPES.ComplexTokenRepository).to(ComplexTokenRepository).inSingletonScope()
 
 // Controller binding
-container
-    .bind<BasicTokenController>(CONTROLLER_TOKEN_TYPES.BasicTokenController)
-    .to(BasicTokenController)
+container.bind<BasicTokenController>(CONTROLLER_TOKEN_TYPES.BasicTokenController).to(BasicTokenController)
 
 export default container

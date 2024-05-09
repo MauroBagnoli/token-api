@@ -1,18 +1,12 @@
 import { injectable, inject } from 'inversify'
-import {
-    ITokenFactory,
-    ITokenPersistenceStrategy,
-    ITokenService,
-} from '../interfaces/token.interfaces'
+import { ITokenFactory, ITokenPersistenceStrategy, ITokenService } from '../interfaces/token.interfaces'
 import TOKEN_TYPES from '../token-types'
-import { ComplexTokenCreateDTO } from './models/dto/requests/create-token.dto'
+import { IComplexTokenCreateDTO } from './models/dto/requests/create-token.dto'
 import { ComplexToken } from './models/complex-token.model'
-import { IComplexTokenRepository } from './types'
+import { IComplexTokenRepository } from './complex-token.interfaces'
 
 @injectable()
-export class ComplexTokenService
-    implements ITokenService<ComplexToken, ComplexTokenCreateDTO>
-{
+export class ComplexTokenService implements ITokenService<ComplexToken, IComplexTokenCreateDTO> {
     private tokenFactory: ITokenFactory
     private tokenPersistenceStrategy: ITokenPersistenceStrategy<ComplexToken>
     private tokenRepository: IComplexTokenRepository
@@ -29,7 +23,7 @@ export class ComplexTokenService
         this.tokenRepository = tokenRepository
     }
 
-    async createToken(data: ComplexTokenCreateDTO): Promise<ComplexToken> {
+    async createToken(data: IComplexTokenCreateDTO): Promise<ComplexToken> {
         const token = await this.tokenFactory.createComplexToken(data)
         return this.tokenPersistenceStrategy.persist(token)
     }

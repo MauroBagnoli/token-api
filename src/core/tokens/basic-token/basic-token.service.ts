@@ -2,20 +2,14 @@
 
 import { injectable, inject } from 'inversify'
 import TOKEN_TYPES from '../token-types'
-import {
-    IBasicTokenRepository,
-    ITokenFactory,
-    ITokenPersistenceStrategy,
-    ITokenService,
-} from '../interfaces/token.interfaces'
+import { ITokenFactory, ITokenPersistenceStrategy, ITokenService } from '../interfaces/token.interfaces'
 import { IBasicTokenCreateDTO } from './models/dto/requests/create-token.dto'
 import { BasicToken } from './models/basic-token.model'
 import { IBasicTokenResponseDto } from './models/dto/response/token-response.dto'
+import { IBasicTokenRepository } from './basic-token.interfaces'
 
 @injectable()
-export class BasicTokenService
-    implements ITokenService<BasicToken, IBasicTokenCreateDTO>
-{
+export class BasicTokenService implements ITokenService<BasicToken, IBasicTokenCreateDTO> {
     private tokenFactory: ITokenFactory
     private tokenPersistenceStrategy: ITokenPersistenceStrategy<BasicToken>
     private tokenRepository: IBasicTokenRepository
@@ -41,9 +35,7 @@ export class BasicTokenService
         this.tokenRepository = tokenRepository
     }
 
-    async createToken(
-        data: IBasicTokenCreateDTO,
-    ): Promise<IBasicTokenResponseDto> {
+    async createToken(data: IBasicTokenCreateDTO): Promise<IBasicTokenResponseDto> {
         const newToken = await this.tokenFactory.createBasicToken(data)
         const savedToken = await this.tokenPersistenceStrategy.persist(newToken)
         const tokenDto = BasicTokenService.dto(savedToken)

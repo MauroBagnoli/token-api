@@ -1,4 +1,4 @@
-export interface ComplexTokenCreateDTO {
+export interface IComplexTokenCreateDTO {
     name: string
     ticker: string
     description: string

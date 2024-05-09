@@ -12,10 +12,7 @@ export class BasicTokenStorage implements ITokenDataAccess {
         this.pool = DatabasePool.getPool()
     }
 
-    async newToken(
-        tableName: string,
-        tokenData: BasicToken,
-    ): Promise<BasicToken> {
+    async newToken(tableName: string, tokenData: BasicToken): Promise<BasicToken> {
         const query = `INSERT INTO ${tableName}(name, ticker, description) VALUES ($1, $2, $3) RETURNING *`
         const values = [tokenData.name, tokenData.ticker, tokenData.description]
         const result = await this.pool.query(query, values)

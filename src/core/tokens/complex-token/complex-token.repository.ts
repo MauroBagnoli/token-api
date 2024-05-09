@@ -1,37 +1,30 @@
-import { injectable } from 'inversify'
+import { injectable, inject } from 'inversify'
+import { ITokenDataAccess } from '../interfaces/token.interfaces'
+import TOKEN_TYPES from '../token-types'
+import { COMPLEX_TOKENS } from './utils/constants'
 import { ComplexToken } from './models/complex-token.model'
-import { TokenQueryOptions } from './models/complex-token.args'
-import { IComplexTokenRepository } from './types'
-
-// TODO: REMOVE AND COPY FROM BASIC TOKEN
-const Token = {
-    query: async (query: string) => ({ rows: [] }),
-}
+import { IComplexTokenRepository } from './complex-token.interfaces'
 
 @injectable()
 export class ComplexTokenRepository implements IComplexTokenRepository {
+    constructor(
+        @inject(TOKEN_TYPES.ITokenDataAccess)
+        private dataAccess: ITokenDataAccess,
+    ) {}
+
     async add(token: ComplexToken): Promise<ComplexToken> {
-        // Implementation for adding a ComplexToken
-        return Promise.resolve(token) // Simulate DB operation
+        return await this.dataAccess.newToken(COMPLEX_TOKENS, token)
     }
+
     async findAll(): Promise<ComplexToken[]> {
-        // Implementation for adding a ComplexToken
-        return Promise.resolve([]) // Simulate DB operation
+        return await this.dataAccess.allTokens(COMPLEX_TOKENS)
     }
-    async findById(id: string): Promise<ComplexToken> {
-        // Implementation for adding a ComplexToken
-        return Promise.resolve({
-            id: 1,
-            name: 'test',
-            ticker: 'test',
-            description: 'test',
-            extraData: 'extradata',
-            describe: () => '',
-        }) // Simulate DB operation
+
+    async findById(id: number): Promise<ComplexToken> {
+        return await this.dataAccess.tokenById(COMPLEX_TOKENS, id)
     }
 
     async findMaxId(): Promise<number> {
-        const result = await Token.query('SELECT MAX(id) as maxId FROM tokens')
-        return result.rows[0].maxId || 0 // Return 0 if no tokens are found
+        return await this.dataAccess.maxId(COMPLEX_TOKENS)
     }
 }

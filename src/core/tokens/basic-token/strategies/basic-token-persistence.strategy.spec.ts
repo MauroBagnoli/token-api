@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { BasicToken } from '../models/basic-token.model'
 import { mock, instance, when, verify } from 'ts-mockito'
 import { BasicTokenPersistenceStrategy } from './basic-token-persistence.strategy'
-import { IBasicTokenRepository } from '../../interfaces/token.interfaces'
+import { IBasicTokenRepository } from '../basic-token.interfaces'
 
 describe('BasicTokenPersistenceStrategy', () => {
     let tokenRepoMock: IBasicTokenRepository
@@ -14,17 +14,10 @@ describe('BasicTokenPersistenceStrategy', () => {
         tokenRepoMock = mock<IBasicTokenRepository>()
 
         // Create an instance of the strategy with the mocked repository
-        persistenceStrategy = new BasicTokenPersistenceStrategy(
-            instance(tokenRepoMock),
-        )
+        persistenceStrategy = new BasicTokenPersistenceStrategy(instance(tokenRepoMock))
 
         // Set up test data
-        testToken = new BasicToken(
-            1,
-            'Basic Token',
-            'BT',
-            'Description of basic token',
-        )
+        testToken = new BasicToken(1, 'Basic Token', 'BT', 'Description of basic token')
 
         // Define behavior for the mocked repository
         when(tokenRepoMock.add(testToken)).thenResolve(testToken)

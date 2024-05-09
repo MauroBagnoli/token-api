@@ -1,11 +1,10 @@
 import { Request, Response } from 'express'
 import { controller, httpGet, httpPost } from 'inversify-express-utils'
 import { inject } from 'inversify'
-import TOKEN_TYPES from '../../../../core/tokens/token-types'
-import { BasicTokenService } from '../../../../core/tokens/basic-token/basic-token.service'
-import { IBasicTokenCreateDTO } from '../../../../core/tokens/basic-token/models/dto/requests/create-token.dto'
 import { basicTokenCreateSchema } from '../schemas/token.schema'
 import { validateRequest } from '../../../middlewares/validate-request'
+import { BasicTokenService, IBasicTokenCreateDTO } from '@tokens'
+import { TOKEN_TYPES } from '@tokens'
 
 @controller('/tokens')
 export class BasicTokenController {

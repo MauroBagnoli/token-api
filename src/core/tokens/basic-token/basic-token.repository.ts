@@ -1,11 +1,9 @@
 import { injectable, inject } from 'inversify'
 import { BasicToken } from './models/basic-token.model'
-import {
-    IBasicTokenRepository,
-    ITokenDataAccess,
-} from '../interfaces/token.interfaces'
+import { ITokenDataAccess } from '../interfaces/token.interfaces'
 import TOKEN_TYPES from '../token-types'
 import { BASIC_TOKENS } from './utils/constants'
+import { IBasicTokenRepository } from './basic-token.interfaces'
 
 @injectable()
 export class BasicTokenRepository implements IBasicTokenRepository {
@@ -18,7 +16,6 @@ export class BasicTokenRepository implements IBasicTokenRepository {
         return await this.dataAccess.newToken(BASIC_TOKENS, token)
     }
 
-    // STRETCH: Add pagination with <queryOptions: TokenQueryOptions>
     async findAll(): Promise<BasicToken[]> {
         return await this.dataAccess.allTokens(BASIC_TOKENS)
     }

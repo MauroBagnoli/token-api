@@ -4,9 +4,7 @@ const TOKEN_TYPES = {
 
     // Strategies
     BasicTokenPersistenceStrategy: Symbol.for('BasicTokenPersistenceStrategy'),
-    ComplexTokenPersistenceStrategy: Symbol.for(
-        'ComplexTokenPersistenceStrategy',
-    ),
+    ComplexTokenPersistenceStrategy: Symbol.for('ComplexTokenPersistenceStrategy'),
 
     // repositories
     BasicTokenRepository: Symbol.for('BasicTokenRepository'),
