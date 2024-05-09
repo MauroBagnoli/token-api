@@ -1,3 +1,5 @@
+// InversifyJS config
+
 const TOKEN_TYPES = {
     // Factories
     TokenFactory: Symbol.for('TokenFactory'),

@@ -18,5 +18,8 @@
             "@tokens": ["./src/core/tokens/index.ts"]
         }
     },
+    "include": [
+        "src/**/*"
+    ],
     "exclude": ["node_modules", "dist"]
 }
