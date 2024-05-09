@@ -5,7 +5,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "migrate": "node-pg-migrate -m './src/infrastructure/storage/migrations' --config './node-pg-migrate.js'",
+    "migrate": "node-pg-migrate -m './src/infrastructure/storage/migrations' --config-file './node-pg-migrate.js' up",
     "prebuild": "rimraf dist",
     "build": "tsc",
     "start": "node dist/main.js",

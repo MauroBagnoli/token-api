@@ -1,4 +1,5 @@
 import { Pool } from 'pg';
+import {config} from 'config'
 
 export class DatabasePool {
     private static instance: Pool;
@@ -8,7 +9,7 @@ export class DatabasePool {
     public static getPool(): Pool {
         if (!DatabasePool.instance) {
             DatabasePool.instance = new Pool({
-                connectionString: process.env.DB_SOURCE,
+                connectionString: process.env.DATABASE_URL,
             });
         }
         return DatabasePool.instance;

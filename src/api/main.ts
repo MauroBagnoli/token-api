@@ -16,7 +16,6 @@ server.setConfig((app) => {
     app.use(express.urlencoded({ extended: true }));
 });
 
-
 const app = server.build();
 
 app.get('/status', (_, res) => {
