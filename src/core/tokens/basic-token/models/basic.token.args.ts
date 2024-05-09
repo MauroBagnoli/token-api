@@ -1,5 +1,5 @@
 // Query options for fetching tokens
-export interface BasicTokenArgs {
+export interface IBasicTokenArgs {
     limit?: number;
     offset?: number;
 }

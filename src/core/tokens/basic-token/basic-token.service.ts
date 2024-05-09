@@ -2,19 +2,18 @@
 
 import { injectable, inject } from "inversify";
 import TOKEN_TYPES from "../token-types";
-import { ITokenFactory, ITokenPersistenceStrategy, ITokenService } from "../interfaces/token.interfaces";
-import { BasicTokenCreateDTO } from "./models/dto/requests/create-token.dto";
+import { IBasicTokenRepository, ITokenFactory, ITokenPersistenceStrategy, ITokenService } from "../interfaces/token.interfaces";
+import { IBasicTokenCreateDTO } from "./models/dto/requests/create-token.dto";
 import { BasicToken } from "./models/basic-token.model";
-import { IBasicTokenRepository } from "./types";
-import { BasicTokenResponseDto } from "./models/dto/response/token-response.dto";
+import { IBasicTokenResponseDto } from "./models/dto/response/token-response.dto";
 
 @injectable()
-export class BasicTokenService implements ITokenService<BasicToken, BasicTokenCreateDTO> {
+export class BasicTokenService implements ITokenService<BasicToken, IBasicTokenCreateDTO> {
     private tokenFactory: ITokenFactory;
     private tokenPersistenceStrategy: ITokenPersistenceStrategy<BasicToken>;
     private tokenRepository: IBasicTokenRepository;
 
-    private static dto(token: BasicToken): BasicTokenResponseDto {
+    private static dto(token: BasicToken): IBasicTokenResponseDto {
         return {
             id: token.id,
             name: token.name,
@@ -33,7 +32,7 @@ export class BasicTokenService implements ITokenService<BasicToken, BasicTokenCr
         this.tokenRepository = tokenRepository;
     }
 
-    async createToken(data: BasicTokenCreateDTO): Promise<BasicTokenResponseDto> {
+    async createToken(data: IBasicTokenCreateDTO): Promise<IBasicTokenResponseDto> {
         const newToken = await this.tokenFactory.createBasicToken(data);
         const savedToken = await this.tokenPersistenceStrategy.persist(newToken);
         const tokenDto = BasicTokenService.dto(savedToken)

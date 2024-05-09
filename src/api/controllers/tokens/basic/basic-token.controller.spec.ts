@@ -3,9 +3,9 @@ import request from 'supertest';
 import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { mock, instance, when, anything } from 'ts-mockito';
-import TOKEN_TYPES from '../../../core/tokens/token-types';
+import TOKEN_TYPES from '../../../../core/tokens/token-types';
 import express, { Application } from 'express';
-import { BasicTokenService } from "../../../core/tokens/basic-token/basic-token.service";
+import { BasicTokenService } from "../../../../core/tokens/basic-token/basic-token.service";
 import './basic-token.controller';
 
 describe('BasicTokenController', () => {
@@ -22,12 +22,11 @@ describe('BasicTokenController', () => {
         container.bind<BasicTokenService>(TOKEN_TYPES.BasicTokenService).toConstantValue(instance(basicTokenServiceMock));
 
         server.setConfig((app) => {
-            app.use(express.json()); // Middleware to parse JSON
+            app.use(express.json());
         });
 
         app = server.build();
 
-        // Setup your mocks here, for example:
         when(basicTokenServiceMock.createToken(anything())).thenResolve({
             id: 1,
             name: 'Basic Token',

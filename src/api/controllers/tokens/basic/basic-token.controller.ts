@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { controller, httpGet, httpPost } from 'inversify-express-utils';
 import { inject } from 'inversify';
-import TOKEN_TYPES from '../../../core/tokens/token-types';
-import { BasicTokenService } from '../../../core/tokens/basic-token/basic-token.service';
-import { BasicTokenCreateDTO } from '../../../core/tokens/basic-token/models/dto/requests/create-token.dto';
-import { basicTokenCreateSchema } from '../../schemas/token.schema'
-import { validateRequest } from '../../middlewares/validate-request';
+import TOKEN_TYPES from '../../../../core/tokens/token-types';
+import { BasicTokenService } from '../../../../core/tokens/basic-token/basic-token.service';
+import { IBasicTokenCreateDTO } from '../../../../core/tokens/basic-token/models/dto/requests/create-token.dto';
+import { basicTokenCreateSchema } from '../schemas/token.schema'
+import { validateRequest } from '../../../middlewares/validate-request';
 
 @controller('/tokens')
 export class BasicTokenController {
@@ -13,7 +13,7 @@ export class BasicTokenController {
 
     @httpPost('/basic', validateRequest(basicTokenCreateSchema))
     public async createToken(req: Request, res: Response): Promise<Response> {
-        const tokenData: BasicTokenCreateDTO = req.body;
+        const tokenData: IBasicTokenCreateDTO = req.body;
         try {
             const token = await this.tokenService.createToken(tokenData);
             return res.status(201).json(token);

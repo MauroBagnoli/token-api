@@ -5,7 +5,7 @@ import container from '../config/inversify.config';
 import 'dotenv/config';
 
 // Load all controllers for binding
-import './controllers/tokens/basic-token.controller'; // Adjust the path as needed
+import './controllers/tokens/basic/basic-token.controller'; // Adjust the path as needed
 
 // Create an instance of InversifyExpressServer and pass the configured container
 const server = new InversifyExpressServer(container, null, { rootPath: '/api/v1' });

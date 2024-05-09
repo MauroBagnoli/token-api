@@ -1,8 +1,8 @@
 import "reflect-metadata";
-import { IBasicTokenRepository } from "../types";
 import { BasicToken } from "../models/basic-token.model";
 import { mock, instance, when, verify } from "ts-mockito";
 import { BasicTokenPersistenceStrategy } from "./basic-token-persistence.strategy";
+import { IBasicTokenRepository } from "../../interfaces/token.interfaces";
 
 describe("BasicTokenPersistenceStrategy", () => {
     let tokenRepoMock: IBasicTokenRepository;

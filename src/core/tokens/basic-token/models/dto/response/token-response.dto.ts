@@ -1,11 +1,11 @@
-export interface BasicTokenResponseDto {
+export interface IBasicTokenResponseDto {
     id: number;
     name: string;
     ticker: string;
     description: string;
 }
 
-export interface ComplexTokenResponseDto {
+export interface IComplexTokenResponseDto {
     id: number;
     name: string;
     ticker: string;

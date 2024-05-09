@@ -1,7 +1,6 @@
 import { injectable, inject } from "inversify";
-import { IBasicTokenRepository } from "./types";
 import { BasicToken } from "./models/basic-token.model";
-import { ITokenDataAccess } from "../interfaces/token.interfaces";
+import { IBasicTokenRepository, ITokenDataAccess } from "../interfaces/token.interfaces";
 import TOKEN_TYPES from "../token-types";
 import { BASIC_TOKENS } from "./utils/constants";
 

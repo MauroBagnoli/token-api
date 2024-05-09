@@ -1,5 +1,5 @@
 import { BasicToken } from "../basic-token/models/basic-token.model";
-import { BasicTokenCreateDTO } from "../basic-token/models/dto/requests/create-token.dto";
+import { IBasicTokenCreateDTO } from "../basic-token/models/dto/requests/create-token.dto";
 import { ComplexToken } from "../complex-token/models/complex-token.model";
 import { ComplexTokenCreateDTO } from "../complex-token/models/dto/requests/create-token.dto";
 
@@ -12,7 +12,7 @@ export interface IToken {
 }
 
 export interface ITokenFactory {
-    createBasicToken(data: BasicTokenCreateDTO): Promise<BasicToken>;
+    createBasicToken(data: IBasicTokenCreateDTO): Promise<BasicToken>;
     createComplexToken(data: ComplexTokenCreateDTO): Promise<ComplexToken>;
 }
 
@@ -31,3 +31,10 @@ export interface ITokenDataAccess {
 export interface ITokenPersistenceStrategy<T> {
     persist(token: T): Promise<T>;
 }   
+export interface IBasicTokenRepository {
+    add(token: BasicToken): Promise<BasicToken>;
+    // TODO: args: IBasicTokenArgs stretch
+    findAll(): Promise<BasicToken[]>;
+    findById(tokenId: number): Promise<BasicToken | null>;
+    findMaxId(): Promise<number | null>;
+}

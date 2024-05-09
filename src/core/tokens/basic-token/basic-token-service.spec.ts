@@ -1,17 +1,16 @@
 import "reflect-metadata";
-import { ITokenFactory, ITokenPersistenceStrategy } from "../interfaces/token.interfaces";
+import { IBasicTokenRepository, ITokenFactory, ITokenPersistenceStrategy } from "../interfaces/token.interfaces";
 import { BasicToken } from "./models/basic-token.model";
 import { mock, instance, when, verify } from "ts-mockito";
-import { IBasicTokenRepository } from "./types";
 import { BasicTokenService } from "./basic-token.service";
-import { BasicTokenCreateDTO } from "./models/dto/requests/create-token.dto";
+import { IBasicTokenCreateDTO } from "./models/dto/requests/create-token.dto";
 
 describe("BasicTokenService", () => {
     let tokenFactoryMock: ITokenFactory;
     let tokenPersistenceStrategyMock: ITokenPersistenceStrategy<BasicToken>;
     let basicTokenRepositoryMock: IBasicTokenRepository;
     let tokenService: BasicTokenService;
-    let tokenData: BasicTokenCreateDTO;
+    let tokenData: IBasicTokenCreateDTO;
     let mockToken: BasicToken;
 
     beforeEach(() => {
