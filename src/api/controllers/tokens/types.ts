@@ -1,5 +1,5 @@
 const TOKEN_TYPES = {
-    BasicTokenController: Symbol.for("BasicTokenController"),    
-};
+    BasicTokenController: Symbol.for('BasicTokenController'),
+}
 
-export default TOKEN_TYPES;
+export default TOKEN_TYPES

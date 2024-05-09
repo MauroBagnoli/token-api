@@ -1,4 +1,4 @@
 export interface ComplexTokenArgs {
-    limit?: number;
-    offset?: number;
+    limit?: number
+    offset?: number
 }

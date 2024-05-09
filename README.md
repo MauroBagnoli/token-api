@@ -26,3 +26,4 @@ $ npm run test
 ### Manually remove migrations
 SELECT * FROM pgmigrations ORDER BY id;
 DELETE FROM pgmigrations WHERE name = '1231_selectedmigration';
+```

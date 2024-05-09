@@ -4,10 +4,10 @@ exports.up = (pgm) => {
         name: { type: 'varchar(255)', notNull: true },
         ticker: { type: 'varchar(255)', notNull: true },
         description: { type: 'text', notNull: true },
-        extraData: { type: 'text', notNull: true }
-    });
-};
+        extraData: { type: 'text', notNull: true },
+    })
+}
 
 exports.down = (pgm) => {
-    pgm.dropTable('complex_tokens');
-};
+    pgm.dropTable('complex_tokens')
+}

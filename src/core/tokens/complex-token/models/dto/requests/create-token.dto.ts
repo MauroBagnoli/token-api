@@ -1,7 +1,6 @@
-
 export interface ComplexTokenCreateDTO {
-    name: string;
-    ticker: string;
-    description: string;
+    name: string
+    ticker: string
+    description: string
     extraData: string
 }

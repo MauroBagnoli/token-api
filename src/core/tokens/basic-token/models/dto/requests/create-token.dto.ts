@@ -1,5 +1,5 @@
 export interface IBasicTokenCreateDTO {
-    name: string;
-    ticker: string;
-    description: string;
+    name: string
+    ticker: string
+    description: string
 }

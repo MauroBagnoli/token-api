@@ -1,14 +1,22 @@
-import { inject, injectable } from "inversify";
-import { IBasicTokenRepository, ITokenPersistenceStrategy } from "../../interfaces/token.interfaces";
-import TOKEN_TYPES from "../../token-types";
-import { BasicToken } from "../models/basic-token.model";
+import { inject, injectable } from 'inversify'
+import {
+    IBasicTokenRepository,
+    ITokenPersistenceStrategy,
+} from '../../interfaces/token.interfaces'
+import TOKEN_TYPES from '../../token-types'
+import { BasicToken } from '../models/basic-token.model'
 
 @injectable()
-export class BasicTokenPersistenceStrategy implements ITokenPersistenceStrategy<BasicToken> {
-    constructor(@inject(TOKEN_TYPES.BasicTokenRepository) private tokenRepo: IBasicTokenRepository) { }
+export class BasicTokenPersistenceStrategy
+    implements ITokenPersistenceStrategy<BasicToken>
+{
+    constructor(
+        @inject(TOKEN_TYPES.BasicTokenRepository)
+        private tokenRepo: IBasicTokenRepository,
+    ) {}
 
     async persist(token: BasicToken): Promise<BasicToken> {
         // Persist the token using the BasicTokenRepository
-        return this.tokenRepo.add(token);
+        return this.tokenRepo.add(token)
     }
 }
