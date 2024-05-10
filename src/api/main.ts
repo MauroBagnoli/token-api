@@ -1,9 +1,9 @@
+import 'module-alias/register'
 import 'reflect-metadata'
 import express from 'express'
 import { InversifyExpressServer } from 'inversify-express-utils'
 import container from '../config/inversify.config'
 import 'dotenv/config'
-import 'module-alias/register'
 
 // Load all controllers for binding
 import './controllers/tokens/basic/basic-token.controller' // Adjust the path as needed

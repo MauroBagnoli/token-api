@@ -65,8 +65,6 @@
         "testEnvironment": "node"
     },
     "_moduleAliases": {
-        "@tokens": [
-            "./src/core/tokens/index.ts"
-        ]
+        "@tokens": "./src/core/tokens/index.ts"
     }
 }

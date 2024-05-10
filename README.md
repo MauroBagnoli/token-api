@@ -20,43 +20,47 @@ This system provides a robust API for managing different types of tokens in the 
 
 ### Prerequisites
 
-- Node.js
-- PostgreSQL
-- A suitable node version manager such as `nvm`
+- [Node.js](https://nodejs.org/)
+- [Docker](https://www.docker.com/) (for running PostgreSQL in a container)
+- [nvm](https://github.com/nvm-sh/nvm) (optional, for managing Node.js versions)
 
 ### Setup
 
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/MauroBagnoli/token-api.git
-   ```
-2. Navigate into the project directory:
-   ```bash
    cd token-api
    ```
-3. Install dependencies:
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
-4. Set up environment variables:
+
+3. **Set up environment variables:**
    ```bash
    cp .env.example .env
    # Edit .env to match your local setup
    ```
-5. Run dockerized database:
+
+4. **Start the PostgreSQL Docker container:**
    ```bash
    make postgres
    ```
-5. Create Database:
+
+5. **Create the database (if not existing):**
    ```bash
    make createdb
    ```
-7. Run migrations:
+
+6. **Run database migrations:**
    ```bash
    npm run migrate up
    ```
 
 ### Starting the Server
+
+To start the server and begin handling API requests:
 
 ```bash
 npm run start
@@ -64,9 +68,35 @@ npm run start
 
 ### Running Tests
 
+Execute tests to ensure everything is set up correctly:
+
 ```bash
 npm test
 ```
+
+### Docker Container Management
+
+- **Start the container:**
+  ```bash
+  docker start postgres12
+  ```
+
+- **Stop the container:**
+  ```bash
+  docker stop postgres12
+  ```
+
+- **Remove the container (if necessary):**
+  ```bash
+  docker rm postgres12
+  ```
+
+- **Access PostgreSQL shell:**
+  ```bash
+  docker exec -it postgres12 psql -U root token_app_db
+  ```
+
+This structure ensures that anyone checking your repository can get up and running with minimal prerequisites, and clearly understands the commands necessary to start the development environment. The additional Docker commands provide guidance on managing the PostgreSQL container without needing to dive deep into Docker documentation.
 
 ### Stack and Tools
 
