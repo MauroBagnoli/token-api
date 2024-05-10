@@ -12,7 +12,7 @@ migrateup:
 	npm run migrate
 
 migratedown:
-	npm run migrate down
+	npm run migratedown
 
 stop:
 	docker stop postgres12

@@ -43,7 +43,7 @@ This system provides a robust API for managing different types of tokens in the 
    # Edit .env to match your local setup
    ```
 
-4. **Start the PostgreSQL Docker container:**
+4. **Start the PostgreSQL Docker container –Make sure Docker app is running in your computer–:**
    ```bash
    make postgres
    ```

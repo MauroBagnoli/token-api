@@ -8,6 +8,7 @@
         "docs": "npx typedoc --entryPointStrategy expand --out docs src",
         "prettier": "prettier --write .",
         "migrate": "node-pg-migrate -m './src/infrastructure/storage/migrations' --config-file './node-pg-migrate.js' up",
+        "migratedown": "node-pg-migrate -m './src/infrastructure/storage/migrations' --config-file './node-pg-migrate.js' down",
         "prebuild": "rimraf dist",
         "build": "tsc",
         "start": "node dist/src/api/main.js",
