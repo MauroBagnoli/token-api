@@ -55,7 +55,7 @@ This system provides a robust API for managing different types of tokens in the 
 
 6. **Run database migrations:**
    ```bash
-   npm run migrate up
+   make migrateup
    ```
 
 ### Starting the Server
