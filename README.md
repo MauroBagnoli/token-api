@@ -115,18 +115,17 @@ First, compile your TypeScript files into JavaScript using the build script, and
 
 - **Stop the container:**
   ```bash
-  make 
+  docker stop postgres12
   ```
 
 - **Remove the container (if necessary):**
   ```bash
-  make removepgimage
+  docker rm postgres12
   ```
 
 - **Access PostgreSQL shell:**
   ```bash
-   make dbshell
-  ```
+  docker exec -it postgres12 psql -U root token_app_db
 
 ### Stack and Tools
 

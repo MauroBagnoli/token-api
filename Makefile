@@ -23,13 +23,7 @@ server:
 debugdb:
 	docker exec -it postgres12 bash
 
-dbshell:
-  docker exec -it postgres12 psql -U root token_app_db
-
-deletepgimage:
-	docker rm postgres12
-
 test:
 	npm run test
 
-.PHONY: postgres createdb server debugdb test migratedown migrateup dbshell deletepgimage
+.PHONY: postgres createdb server debugdb test migratedown migrateup
