@@ -38,4 +38,3 @@ yarn.lock
 # Security
 .env
 !*.example.env
-Makefile
