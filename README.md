@@ -68,20 +68,41 @@ npm run start
 npm test
 ```
 
-## Stack
+### Stack and Tools
 
-This project uses:
-- **Express.js** for the web server framework.
-- **TypeScript** for static typing and scalable code management.
-- **PostgreSQL** for database management.
-- **InversifyJS** for dependency injection and modular architecture.
-- **TSMockito* unit testing mocks.
+- **Express.js**: Node.js web application framework.
+- **TypeScript**: JavaScript superset with static typing.
+- **PostgreSQL**: Open source object-relational database system.
+- **InversifyJS**: Inversion of control container for JavaScript & Node.js powered by TypeScript.
+- **Joi**: Schema description language and data validator for JavaScript.
+
+### Testing and Development Tools
+
+- **Jest**: JavaScript testing framework.
+- **Supertest**: Library for testing HTTP servers.
+- **ts-mockito**: TypeScript mocking library.
+- **ESLint**: Static analysis tool for JavaScript and TypeScript.
+- **Prettier**: Code formatter.
+- **TypeDoc**: Documentation generator for TypeScript projects.
+- **ts-jest**: Jest transformer with source map support for TypeScript.
+- **Node-PG-Migrate**: Migration tool for PostgreSQL databases.
+
+### Configuration Files
+
+- **Jest**: Configures testing settings and environment.
+- **ESLint**: Manages linting rules for the project.
+- **Prettier**: Defines code formatting rules.
+- **TypeScript (`tsconfig.json`)**: Configures TypeScript compiler options.
+
+### Environment Management
+
+- **dotenv**: Manages environment variables from `.env` files.
 
 ## Architectural Decisions
 
 ### Dependency Injection
 
-Utilizing InversifyJS allows for decoupling classes and easier management of service lifetimes.
+InversifyJS enhances our architecture by facilitating the decoupling of components and adjusting the direction of dependencies. This flexibility allows seamless integration with various databases or communication controllers, promoting a more scalable and maintainable codebase.
 
 ### Modular Structure
 
