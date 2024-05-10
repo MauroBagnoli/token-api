@@ -60,19 +60,24 @@ This system provides a robust API for managing different types of tokens in the 
 
 ### Starting the Server
 
-To start the server and begin handling API requests:
+#### For Development:
+Use `npm run start:dev` to start the server with `nodemon` and `ts-node`, which will automatically recompile your TypeScript files when changes are detected.
 
 ```bash
-npm run start
+npm run start:dev
 ```
 
-### Running Tests
+#### For Production:
+First, compile your TypeScript files into JavaScript using the build script, and then start the server with the compiled JavaScript.
 
-Execute tests to ensure everything is set up correctly:
-
-```bash
-npm test
-```
+1. Compile TypeScript to JavaScript:
+   ```bash
+   npm run build
+   ```
+2. Start the server using the compiled JavaScript:
+   ```bash
+   npm run start
+   ```
 
 ### Docker Container Management
 
